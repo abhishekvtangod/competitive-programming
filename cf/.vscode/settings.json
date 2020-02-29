@@ -7,6 +7,9 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "*.tcc": "cpp",
+        "list": "cpp",
+        "iosfwd": "cpp"
     }
 }

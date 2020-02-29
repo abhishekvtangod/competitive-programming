@@ -15,7 +15,17 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-    ci
+    ll t;
+    cin>>t;
+    while(t--)    
+    {   ll c,sum;
+        cin>>c>>sum;
+        ll remain = sum % c;
+        ll each = (sum/c);
 
+        ll all_equal = (each*each) * (c-remain);
+        ll addnl = ((each+1)*(each+1))*(remain);
+        cout<<all_equal+addnl<<endl;
+    }
     return 0;
 }

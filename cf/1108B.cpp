@@ -14,40 +14,27 @@ int main()
 {   
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
-    
     ll n,x;
     cin>>n;
     vector<ll> v;
-    for(ll i = 0; i < n ; i++)
-    {   
+    for(ll i =0; i<n;i++)
+    {
         cin>>x;
         v.push_back(x);
     }
     sort(v.begin(),v.end());
-    v.push_back(v[ceil(n/2-1)]);
-    v.erase(v.begin()+ceil(n/2-1));
-    ll flag = 0;
-    for(ll i =0; i<v.size();i++)
+    x = *v.rbegin();
+    cout<<x<<" ";
+    ll y;
+    for(ll i =1;i < n; i++)
     {
-        if((v[i] >= v[(i+1)%n] + v[(i-1)%n]) )
+        if(((x % v[i]) != 0) || (v[i] == v[i-1]))
         {
-            flag = 1;
-            break;
+            // cout<<v[i]<<") ";
+            y = v[i];
+            // break;
         }
     }
-    if(flag == 0)
-    {
-        cout<<"YES\n";
-        for(auto it = v.begin(); it!=v.end();it++)
-        {
-            cout<<*it<<" ";
-        }
-    }
-    else
-    {
-        cout<<"NO\n";
-    }
-    
-    
+    cout<<y;
     return 0;
 }

@@ -3,9 +3,10 @@
 #include<bits/stdc++.h>
 using namespace std; 
 
-#define as(n,a,b) assert(a<=n && n<=b);
 #define mod 1000000007
 #define gcd(a,b) __gcd(a,b)
+#define lcm(a,b) (a*b)/gcd(a,b)
+#define bits(x) __builtin_popcountll(x)
 
 typedef long long int ll;
 
@@ -14,13 +15,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-    ll n,k;cin>>n>>k;
-    map<char,int> mp;
-    while (n--)
-    {
-        char x;cin>>x;
-        
-    }
+    ll n,a,b,c;
+    cin>>n>>a>>b;
+
+    
+    
 
     return 0;
 }
