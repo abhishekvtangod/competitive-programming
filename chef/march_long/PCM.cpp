@@ -15,13 +15,25 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-    ll q;
-    cin>>q;
-    while (q--)
+    ll n;cin>>n;
+    while(n--)
     {
-        ll n,m;
-        cin>>n>>m;
-        
+
+        map<char,ll> mp;
+        char x;
+        ll q=3;
+        while(q--)
+        {
+            cin>>x;
+            mp[x]++;
+        }
+        if(mp.size() == 3)
+            cout<<"YES\n";
+        else
+        {
+            cout<<"NO\n";
+        }
+
     }
     
     

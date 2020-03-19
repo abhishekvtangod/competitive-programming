@@ -15,15 +15,26 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-    ll q;
-    cin>>q;
-    while (q--)
+    ll t;cin>>t;
+    while(t--)
     {
-        ll n,m;
-        cin>>n>>m;
-        
+        ll n,q;cin>>n>>q;
+        ll x;
+        vector<pair<ll,ll>> a;
+        for(ll i=1;i<=n;i++)
+        {
+            cin>>x;
+            a.push_back({i,x});
+        }
+        ll x1,x2,y;
+        while(q--)
+        {
+            cin>>x1>>x2>>y;
+                        
+
+
+        }
     }
-    
     
 
     return 0;
