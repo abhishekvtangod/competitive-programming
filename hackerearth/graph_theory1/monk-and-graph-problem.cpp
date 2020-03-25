@@ -9,16 +9,16 @@ using namespace std;
 #define bits(x) __builtin_popcountll(x)
 
 typedef long long int ll;
-ll mx=0;
-void dfs(ll i,vector<ll> adj[],bool visited[])
+ll dfs(ll i,vector<ll> adj[],bool visited[])
 {
-    if(visited[i]) return;
-    mx++;
     visited[i] = true;
+    ll cnt = adj[i].size();
     for(auto u: adj[i])
     {
-        dfs(u,adj,visited);        
+        if(!visited[u])
+            cnt+=dfs(u,adj,visited);        
     }
+    return cnt;
 }
 
 void addEdge(vector<ll> adj[],ll u,ll v)
@@ -44,19 +44,21 @@ int main()
     {
         cin>>u>>v;
         addEdge(adj,u,v);
+        if(u > v)
+            swap(u,v);    
+        
     }
 
     bool visited[n+1];
     memset(visited,false,n+1);
-    ll max_comp[n+1];
-    memset(max_comp,0,n+1);
+    ll max_comp=0;
+    // memset(max_comp,0,n+1);
     for(ll i =1; i <=n; i++ )
     {
-        mx=-1;
         if(!visited[i])
         {
-            dfs(i,adj,visited);
-            max_comp[]
+            
+            max_comp=max(max_comp,dfs(i,adj,visited)/2);
         }
     }
     cout<<max_comp;

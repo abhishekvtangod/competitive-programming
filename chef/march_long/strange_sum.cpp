@@ -12,7 +12,6 @@ typedef long long int ll;
 ll ans=0;
 void merge(ll arr[],ll l, ll m, ll r)
 {
-    //temp array
     ll n1=m-l+1,n2=r-m;
     ll L[n1],R[n2];
     for(ll i = 0; i  < n1; i++)
@@ -27,29 +26,26 @@ void merge(ll arr[],ll l, ll m, ll r)
     {
         if(L[i] < R[j])
         {
-            // if(L[i] < R[j])
-            // if(L[i] == R[j])
-                // ans+=L[i]*(n2-j-1);
-            // else
-                ans+=L[i]*(n2-j);
-             
+            
+            ans+=L[i]*(n2-j);   
+            /*
+
+            adding (n2-j) times left element (L[i]) of non-inversion,
+            since all elements from j to n2(last index of array) 
+            are greater than L[i] 
+            
+            */
 
             arr[k] = L[i];
             i++;
         }
         else
         {
-            // ans += (n1-i);  //counts number of inversions
-            // for(ll ii = i; ii < n1; ii++)
-            // {
-                // ans += L[ii];
-                // cout<<L[ii]<<endl;
-            // }
+            
             arr[k] = R[j];
             j++;
         }
         k++;
-            // cout<<ans<<" -----\n";
 
     }
     while (i < n1)
@@ -84,10 +80,9 @@ void mergeSort(ll arr[],ll l,ll r)
 
 int main()
 {   
-    // ios::sync_with_stdio(false); 
-    // cin.tie(nullptr);
+    ios::sync_with_stdio(false); 
+    cin.tie(nullptr);
 
-    // cout<<"Enter size :";
     // freopen ("output5.txt", "w", stdout); 
 
     ll test;cin>>test;
@@ -104,17 +99,11 @@ int main()
         }
         mergeSort(arr,0,n-1);
 
-        // for(ll i = 0; i < n;i++)
-        //     cout<<arr[i]<<" ";
-        // cout<<endl;
-        // cout<<endl<<"----------->";
-        // cout<<ans%mod<<"------"<<endl;
-        // cout<<ans%mod<<endl;
-    
         cout<<ans%mod<<endl;
 
             
     }
+
     // fclose(stdout); 
     
     return 0;
