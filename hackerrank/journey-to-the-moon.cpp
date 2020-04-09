@@ -29,15 +29,54 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<ll> adj[100005];
+ll visited[100005];
 
 
+ll dfs(ll x)
+{
+	ll nd=1;
+	visited[x]=1;
+	for(auto u:adj[x])
+	{
+		if(!visited[u])
+		{
+			nd+=dfs(u);
+		}
+	}
+	return nd;
+}
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
-	
-	cout<<min<<endl;
+		ll n,p;cin>>n>>p;
+		ll u,v;
+		memset(visited,0,n+1);
+		
+		for(ll i=0; i<p;i++)
+		{
+			cin>>u>>v;
+			adj[u].push_back(v);
+			adj[v].push_back(u);
+		}
+		vector<ll> vv;
+		for(ll i=0; i <n;i++)
+		{
+			if(!visited[i])
+			{
+				vv.push_back(dfs(i));
+			}
+			
+		}
+		sort(vv.begin(),vv.end());
+		ll cnt=0;
+		ll sum=vv[0];
+		for(ll i=1; i<(ll)(vv.size());i++)
+		{
+			cnt+=vv[i]*sum;
+			sum+=vv[i];
+		}
+		cout<<cnt;
 }
 
 
@@ -46,11 +85,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

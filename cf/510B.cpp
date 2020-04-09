@@ -29,15 +29,41 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
-
+char matr[52][52];
+bool visited[52][52]={false};
+ll m,n;
+void dfs(ll i,ll j,ll pi, ll pj, char c)
+{
+	if(i<0||j<0||i>=n||j>=m||matr[i][j]!=c)return;
+	
+	if(visited[i][j])
+	{
+		cout<<"Yes\n";
+		exit(0);
+	}
+	visited[i][j]=true;
+	if(j+1 != pj)dfs(i,j+1,i,j,c);
+	if(j-1 != pj)dfs(i,j-1,i,j,c);
+	
+	if(i+1 != pi)dfs(i+1,j,i,j,c);
+	if(i-1 != pi)dfs(i-1,j,i,j,c);
+}
 
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	cin>>n>>m;
 	
-	cout<<min<<endl;
+	for(ll i=0;i<n;i++)
+		for(ll j=0;j<m;j++)
+			cin>>matr[i][j];
+			
+	for(ll i=0;i<n;i++)
+		for(ll j=0;j<m;j++)
+			if(!visited[i][j])
+				dfs(i,j,-1,-1,matr[i][j]);
+				
+	cout<<"No\n";
 }
 
 
@@ -46,11 +72,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

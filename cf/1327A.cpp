@@ -34,10 +34,21 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n,k;
+	cin>>n>>k;
+	if((n%2 && !(k%2)) || (!(n%2) && (k%2)))
+	{
+		cout<<"NO\n";
+	}
+	else if(n >= (ll)k*k)
+	{
+		cout<<"YES\n";
+	}
+	else
+	{
+		cout<<"NO\n";
+	}
 	
-	cout<<min<<endl;
 }
 
 

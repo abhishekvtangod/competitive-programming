@@ -29,15 +29,65 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<ll> adj[1000006];
+ll side[1000006];
+ll n;
 
+
+bool bfs_bipartite(ll x)
+{
+	queue<ll> q;
+	q.push(x);
+	side[x]=1;
+	while(!q.empty())
+	{
+		ll s = q.front();q.pop();
+		
+		for(auto u:adj[s])
+		{
+			if(!side[u])
+			{
+				side[u] = -side[s];
+				q.push(u);
+			}
+			else if(side[u] == side[s])
+				return false;
+		}
+		
+		
+		
+	}
+	
+	return true;
+}
 
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
 	
-	cout<<min<<endl;
+	ll e;cin>>n>>e;
+	for(ll i=0;i<n+2;i++)adj[i].clear(),side[i]=0;
+	
+	for(ll i=0;i < e;i++)
+	{
+		ll u,v;cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+		
+	}
+	ll flag =1;
+	for(ll i=1; i <=n ; i++)
+	{
+		if(!side[i])
+		{
+			if(!bfs_bipartite(i))
+				flag=0;
+		}
+	}
+	
+	
+	cout<<((flag)?"No suspicious bugs found!\n":"Suspicious bugs found!\n");
+
 }
 
 
@@ -46,12 +96,15 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
+
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Scenario #"<<i<<":\n";
 		solve();
+		i++;
 	}
 	
-
     return 0;
 }

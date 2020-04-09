@@ -29,15 +29,50 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
-
-
+ll sum,row=0,col=0;
+vector<ll> rr[105],cc[105];
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n;
+	cin>>n;
+	sum=0;
+	ll arr[105][105];
+	for(ll i=0; i<n;i++)
+	{
+		rr[i].clear();
+		cc[i].clear();
+	}
+	for(ll i=0; i<n;i++)
+	{
+		for(ll j=0; j<n;j++)
+		{
+			cin>>arr[i][j];
+			if(i == j)
+				sum+=arr[i][j];
+			
+			rr[i].push_back(arr[i][j]);
+			cc[j].push_back(arr[i][j]);
+		}
+	}
+	row=0;
+	col=0;
+	for(ll i=0;i<n;i++)
+	{	
+		unordered_set<ll> r(rr[i].begin(),rr[i].end());
+		if(r.size() != rr[i].size())
+			row++;
+	}
 	
-	cout<<min<<endl;
+	for(ll i=0;i<n;i++)
+	{
+		unordered_set<ll> c(cc[i].begin(),cc[i].end());
+		if(c.size() != cc[i].size())
+			col++;
+	}
+	
+	
+		
 }
 
 
@@ -47,9 +82,13 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+
 		solve();
+		cout<<"Case #"<<i<<": "<<sum<<" "<<row<<" "<<col<<'\n';
+		i++;
 	}
 	
 

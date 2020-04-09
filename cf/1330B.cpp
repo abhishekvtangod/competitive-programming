@@ -31,13 +31,75 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
+ll foo(vector<ll> v)
+{
+	set<ll> a,b;
+	ll i=0;
+	ll n=v.size();
+	for(;i<n;i++)
+	{
+		if(a.count(v[i]) == 0)
+		{
+			a.insert(v[i]);
+		}
+		else
+			break;
+	}
+	
+	for(;i<n;i++)
+	{
+		b.insert(v[i]);
+	}
+	
+	vector<ll> aa(a.begin(),a.end());
+	vector<ll> bb(b.begin(),b.end());
+	
+	
+	for(i=0;i<aa.size();i++)
+	{
+		if(aa[i] != i+1)
+			return 0;
+	}
+//-------	
+	//for(auto aaa:aa)
+		//cout<<aaa<<" ";
+	
+	//cout<<endl;
+	//for(auto aaa:bb)
+		//cout<<aaa<<" ";
+		
+	//cout<<endl;
+//-------
+
+	for(i=1;i<bb.size();i++)
+	{
+		if(bb[i] != i+1)
+			return 0;
+	}
+	
+	return 1;
+}
+
+
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n;cin>>n;
+	vector<ll> v;
+
+	ll x;
+	for(ll i=0; i<n;i++)
+	{
+		cin>>x;
+		v.push_back(x);
+	}
+	ll cnt=0;
+	cnt+=foo(v);
+	reverse(v.begin(),v.end());
+	cnt+=foo(v);
 	
-	cout<<min<<endl;
+	cout<<cnt<<endl;
+
 }
 
 

@@ -28,16 +28,52 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //     return hash<long long>()(((long long)x.first)^(((long long)x.second)<<32));
 //   }
 // };
-
-
+vector<ll> v;
+ll n;
+void test(ll x)
+{
+	for(ll i=0; i<x;i++)
+	{
+		bool flag=1;
+			for(ll j=i;j<n && flag;j+=x)
+			{
+				flag=v[j];
+			}
+			if(flag)
+			{
+				cout<<"YES";exit(0);
+			}
+	}
+}
 
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	cin>>n;
+	v.resize(n+1);
+	for(ll i=0;i<n;i++)
+	{
+		cin>>v[i];
+	}
 	
-	cout<<min<<endl;
+	for(ll i=1; i*i<=n; i++)
+	{
+		if(!(n%i))
+		{
+			if(n/i>=3)	// number of points should be greater than 3
+			{
+				test(i);
+			}
+			if(i>=3)
+			{
+				test(n/i);
+			}
+
+
+			
+		}
+	}
+	cout<<"NO";
 }
 
 
@@ -46,11 +82,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

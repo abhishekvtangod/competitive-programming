@@ -29,15 +29,75 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<pair<ll,ll>> adj[10004];
+ll dist[10004];
+ll visited[10004];
+
+
+ll dijkstra(ll a,ll b)
+{
+	priority_queue<pair<ll,ll>> pq;
+	dist[a]=0;
+
+	pq.push({0,a});
+	
+	visited[a]=1;
+	
+	while(!pq.empty())
+	{
+		ll s = pq.top().second;pq.pop();
+		
+		visited[s]=1;
+		for(auto u:adj[s])
+		{
+			if(!visited[u.first])
+			{
+				ll v = u.first,w = u.second;
+			
+				
+				if(dist[s]+w < dist[v])
+				{
+					dist[v]=dist[s]+w;
+					pq.push({-dist[v],v});
+				}
+
+			}
+		}
+	}
+	
+	if(dist[b] == (ll)INFINITY)
+		return -1;
+		
+	return dist[b];
+}
 
 
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll v,x,y,k,w;cin>>v>>k;
+	for(ll i=1;i<=v;i++){
+			adj[i].clear();
+			visited[i]=0;
+			dist[i]=INFINITY;
+	}
 	
-	cout<<min<<endl;
+	
+	
+	
+	for(ll i=0; i <k;i++)
+	{
+		cin>>x>>y>>w;
+		adj[x].push_back({y,w});
+	}
+	ll a,b;cin>>a>>b;
+	ll ans = dijkstra(a,b);
+	if(ans == -1)
+		cout<<"NO\n";
+	else
+		cout<<ans<<endl;
+	
+	
 }
 
 
@@ -52,6 +112,6 @@ int main()
 		solve();
 	}
 	
-
+	
     return 0;
 }

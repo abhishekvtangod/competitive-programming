@@ -34,10 +34,22 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
-	
-	cout<<min<<endl;
+		ll n;cin>>n;
+		vector<ll> p;
+		ll x;
+		for(ll i=0;i<n;i++)
+		{
+			cin>>x;
+			p.push_back(x);
+		}
+		sort(p.begin(),p.end(),greater<ll>());
+		ll sum=0;
+		for(ll i=0; i<n;i++)
+		{
+			p[i]-=i;
+			sum+=max((ll)0,p[i]);
+		}
+		cout<<sum%mod<<'\n';
 }
 
 

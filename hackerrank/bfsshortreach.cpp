@@ -29,15 +29,64 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<ll> adj[1005];
+ll visited[1005];	
+ll dist[1005];
 
+void bfs(ll x)
+{
+	queue<ll> q;
+	q.push(x);
+	visited[x]=1;
+	dist[0]=0;
+	while(!q.empty())
+	{
+		ll s = q.front();q.pop();
 
+		for(auto u:adj[s])
+		{
+			if(!visited[u])
+			{
+				visited[u]=1;
+				dist[u]=dist[s]+1;
+				q.push(u);
+			}
+
+		}
+		
+		
+		
+	}
+	
+
+}
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll u,v,n,s,m;cin>>n>>m;
 	
-	cout<<min<<endl;
+	
+	for(ll i=0;i<n+1;i++)adj[i].clear(),visited[i]=0,dist[i]=0;
+	
+	for(ll i=0;i < m;i++)
+	{
+		cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+
+	}
+	cin>>s;
+	
+	bfs(s);
+	
+	for(ll i=1; i<=n;i++)
+	{
+		if(i == s)continue;
+		else if(visited[i])cout<<dist[i]*6<<" ";
+		else cout<<"-1 ";
+	}
+	cout<<'\n';
+	
 }
 
 

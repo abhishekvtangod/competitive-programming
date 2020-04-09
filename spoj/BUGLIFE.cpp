@@ -29,16 +29,61 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<ll> adj[1000006];
+bool visited[1000006];
+ll color[1000006];
 
+bool isBipartite(ll x)
+{
+	visited[x]=true;
+	for(auto u:adj[x])
+	{
+		if(!visited[u])
+		{
+				color[u] = !color[x];
+				if(!isBipartite(u))
+					return false;
+				
+		}
+		else if(color[u] == color[x])
+			return false;
+	}
+	
+	return true;
+}
 
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n,e;cin>>n>>e;
+	for(ll i=0;i<n+2;i++)adj[i].clear(),visited[i]=false,color[i]=0;
 	
-	cout<<min<<endl;
+	for(ll i=0;i < e;i++)
+	{
+		ll u,v;cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+		
+	}
+	
+	
+	color[1]=0;
+	ll flag =0;
+	for(ll i=1; i <=n;i++)
+	{
+		if(!visited[i])
+		{
+			if(!isBipartite(i))
+			{
+				flag=1;
+				break;
+			}
+		}
+	}
+	
+	cout<<((!flag)?"No suspicious bugs found!\n":"Suspicious bugs found!\n");
 }
+
 
 
 int main()
@@ -47,9 +92,12 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Scenario #"<<i<<":\n";
 		solve();
+		i++;
 	}
 	
 

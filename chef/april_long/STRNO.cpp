@@ -29,15 +29,43 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+ll countPowersPrimeFactors(int n)  
+{  
+	ll cnt=0;
+    while (n % 2 == 0)  
+    {  
+		cnt++;  
+        n = n/2;  
+    }  
+  
 
-
+    for (int i = 3; i <= sqrt(n); i = i + 2)  
+    {  
+        while (n % i == 0)  
+        {  
+			cnt++;  
+            n = n/i;  
+        }  
+    }  
+  
+    
+    if (n > 2)  
+		cnt++;
+	
+	return cnt;
+}  
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll x,k;
+	cin>>x>>k;
+	if(k<=countPowersPrimeFactors(x))
+	{
+		cout<<"1\n";
+	}
+	else
+		cout<<"0\n";
 	
-	cout<<min<<endl;
 }
 
 
@@ -45,7 +73,8 @@ int main()
 {   
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
-
+  
+  
 	ll t;cin>>t;
 	while(t--)
 	{

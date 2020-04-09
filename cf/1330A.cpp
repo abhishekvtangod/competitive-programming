@@ -34,10 +34,44 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n,x;cin>>n>>x;
+	ll inp;
+	set<ll> s;
+	for(ll i=0; i<n;i++)
+	{
+		cin>>inp;
+		s.insert(inp);
+	}
+	ll i=1;
+	ll cnt=0;
 	
-	cout<<min<<endl;
+	for(auto it=s.begin();;)
+	{
+		if((*it != i))
+		{
+			
+			if((cnt+1<=x))
+				cnt++;
+			else
+				break;
+				
+		}
+		else
+			it++;
+		
+		//cout<<cnt<<"->"<<i<<" ";
+		
+		if(it==s.end())
+		{
+			i+=x-cnt+1;
+			break;
+		}
+		i++;
+		
+
+	}
+	
+	cout<<i-1<<endl;
 }
 
 

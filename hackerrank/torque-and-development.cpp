@@ -28,16 +28,62 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //     return hash<long long>()(((long long)x.first)^(((long long)x.second)<<32));
 //   }
 // };
+vector<ll> *adj;
+ll *visited;
 
-
-
-
+ll dfs(ll x)
+{
+	ll rd = 1;
+	visited[x]=true;
+	//cout<<x<<" ";
+	for(auto u:adj[x])
+	{
+		if(!visited[u])
+		{
+			rd+=dfs(u);
+		}
+	}
+	return rd;
+}
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n,m,cl,cr;cin>>n>>m>>cl>>cr;
 	
-	cout<<min<<endl;
+	adj = new vector<ll>[n+2];
+	visited = new ll[n+2];
+	
+	
+	for(ll i=0;i<m;i++)
+	{
+		ll u,v;cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+
+	}
+	//memset(visited,0,n+2);
+	fill(visited,visited+n+2,0);
+	//for(ll i=0;i<n+2;i++)
+		//cout<<visited[i]<<" ";
+		//cout<<endl;
+	ll lib=0,roads=0;
+	for(ll i=1;i<=n;i++)
+	{
+		if(!visited[i])
+		{
+			roads+=dfs(i)-1;
+			lib++;
+
+		}
+	}
+	ll cost1=roads*cr+lib*cl,cost2=n*cl;
+	//cout<<"----"<<cost1<<" "<<cost2<<"-----\n";
+	//cout<<"^^^^"<<roads<<" "<<lib<<"^^^^^\n";
+	cout<<min(cost1,cost2)<<'\n';
+
+
+	delete[] adj;
+	delete[] visited;
+
 }
 
 

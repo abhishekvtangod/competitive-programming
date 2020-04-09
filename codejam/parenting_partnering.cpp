@@ -31,13 +31,46 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
-
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
 	
-	cout<<min<<endl;
+	ll n;cin>>n;
+	vector<tuple<ll,ll,ll>> v;
+	ll s,e;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>s>>e;
+		v.push_back({s,e,i});
+		
+	}
+	sort(v.begin(),v.end());
+	
+	char ans[1006];
+	ll cur_C=0,cur_J=0;
+	for(ll i=0;i<n;i++)
+	{
+		ll st,ed,idx;
+		tie(st,ed,idx)=v[i];
+		if(st>=cur_C)
+		{
+			ans[idx]='C';cur_C=ed;
+		}
+		else if(st>=cur_J)
+		{
+			ans[idx]='J';cur_J=ed;
+		}
+		else
+		{
+			cout<<"IMPOSSIBLE\n";
+			return;
+		}
+	}
+	
+	for(ll i=0;i<n;i++)
+		cout<<ans[i];
+
+	cout<<'\n';
+
 }
 
 
@@ -47,9 +80,12 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Case #"<<i<<": ";
 		solve();
+		i++;
 	}
 	
 

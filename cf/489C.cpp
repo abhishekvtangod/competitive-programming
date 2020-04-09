@@ -17,11 +17,6 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // oset<pair<ll,ll>> indexed_set;
 
 
-#ifdef _DEBUG
-	freopen("input.txt", "r", stdin);
-//	freopen("output.txt", "w", stdout);
-#endif
-
 
 // struct HASH{
 //   size_t operator()(const pair<int,int>&x)const{
@@ -31,13 +26,9 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
-
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
-	
-	cout<<min<<endl;
+			
 }
 
 

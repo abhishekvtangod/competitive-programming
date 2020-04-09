@@ -34,10 +34,58 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n;cin>>n;
+	vector<ll> v[n];
+	bool free[n+1];
+	memset(free,true,n+1);
 	
-	cout<<min<<endl;
+	vector<bool> free_girl(n+1,true),c(n+1,true);
+	
+	for(ll i=0; i<n;i++)
+	{
+		ll x;cin>>x;
+		v[i].resize(x,0);
+		for(ll j=0;j<x;j++)
+		{
+			cin>>v[i][j];
+		}
+	}
+	ll cnt=0;
+	ll ans=0,ii=0,jj=1;
+	for(ll i=0;i<n;i++)
+	{
+			bool flag=true;
+			for(ll j=0; j<(ll)v[i].size();j++)
+			{
+				if(c[v[i][j]] == true)	//if free
+				{
+					c[v[i][j]]=false;
+					flag=false;
+					ans++;
+
+					break;
+				}
+			}
+			//free_girl[i]=flag;
+			if(flag)cnt=i;
+	}
+	if(ans == n)
+	{
+		cout<<"OPTIMAL\n";
+	}
+	else
+	{
+		cout<<"IMPROVE\n";
+		//while(free_girl[ii] == false)
+			//ii++;
+		
+		while(c[jj] == false)
+			jj++;
+		ii = cnt;
+		cout<<ii+1<<" "<<jj<<'\n';
+		
+	}
+	
 }
 
 

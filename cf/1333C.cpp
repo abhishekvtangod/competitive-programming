@@ -1,5 +1,8 @@
-// [abhishekvtangod]
-// g++ -Wall -Wextra -Wshadow filename.cpp
+/**
+ *    author:  abhishekvtangod
+ *    created: 09.04.2020 09:53:40 IST
+**/
+
 #include<bits/stdc++.h>
 using namespace std; 
 
@@ -34,10 +37,22 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
-	
-	cout<<min<<endl;
+		ll n,x;cin>>n;
+		map<ll,ll> idx;
+		ll sm=0,last=0;
+		idx[0]=0;
+		ll ans=0;
+		for(ll i=1; i<=n;i++)
+		{
+			cin>>x;
+			sm+=x;
+			if(idx.count(sm))
+				last = max(last,idx[sm]+1);
+				
+			ans+=max(0LL,i-last);
+			idx[sm]=i;
+		}
+		cout<<ans;
 }
 
 
@@ -46,11 +61,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

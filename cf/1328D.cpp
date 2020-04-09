@@ -30,14 +30,94 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
-
-
 void solve()
 {
-	ll h,m;cin>>h>>m;
-	ll min = (23-h)*60+(60-m);
+	ll n;
+	vector<ll> v;
+
+	cin>>n;
+	for(ll i= 0; i< n; i++)
+	{
+		ll x;
+		cin>>x;
+		v.push_back(x);
+	}
+	set<ll> temp(v.begin(),v.end());
+	if(temp.size() == 1)
+	{
+		cout<<"1\n";
+		for(ll i=0;i <n;i++)
+			cout<<"1 ";
+		cout<<'\n';
+		return;
+	}
+	if(!(v.size()%2))
+	{
+		
+		cout<<"2\n";
+		for(ll i =0; i <n;i++)
+		{
+			
+			cout<<((i%2)?1:2)<<" ";
+			
+		}
+		cout<<'\n';
+		return;
+		
+	}
+	// n is odd
 	
-	cout<<min<<endl;
+	
+	
+
+	ll three=0;
+
+	for(ll i=0; i<n;i++)
+	{
+		if(v[i] == v[(i+1)%n])
+		{
+			three=1;break;
+			
+		}
+
+	}
+	
+	if(three)
+	{
+		
+		cout<<"2\n";
+		for(ll i=0; i <n-1;i++)
+		{
+			if(v[i] == v[i+1] && three)
+			{
+				three=0;
+				cout<<1+i%2<<" ";
+				
+			}
+			
+			
+			cout<<1+i%2<<" ";
+		}
+		if(three)
+		{
+			cout<<"1";
+		}
+		cout<<'\n';
+	}
+	else
+	{
+			cout<<"3\n";
+			for(ll i=0; i<n-1;i++)
+			{
+				cout<<1+(i%2)<<" ";
+			}
+			cout<<"3\n";
+	}
+	
+	
+
+
+
 }
 
 
