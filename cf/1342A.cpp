@@ -37,6 +37,15 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll x,y;cin>>x>>y;
+	ll a,b;cin>>a>>b;
+	
+	ll as = abs(x-y)*a;
+	ll bs = min(x,y)*b;
+	
+	ll bss = min(x,y)*2*a;
+	
+	cout<<as+min(bs,bss)<<'\n';
 	
 }
 

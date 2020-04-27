@@ -1,12 +1,12 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 25.04.2020 19:40:48 IST       
 **/
 
 #include<bits/stdc++.h>
 using namespace std; 
 
-#define mod 1000000007
+#define mod 998244353
 #define gcd(a,b) __gcd(a,b)
 #define lcm(a,b) (a*b)/gcd(a,b)
 #define bits(x) __builtin_popcountll(x)
@@ -37,7 +37,23 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,x;cin>>n;
+	vector<ll> v;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		v.push_back(x);
+	}
+	sort(v.begin(),v.end());
 	
+    ll oc = n - 1, sum = 0; 
+    for (ll i = 0; i < n; i++) { 
+        sum += v[i] * pow(2, oc); 
+        oc--; 
+    }
+    
+    cout<<sum<<endl;
+		
 }
 
 

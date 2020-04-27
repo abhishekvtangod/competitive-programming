@@ -32,11 +32,27 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+vector<pair<ll,ll>> adj[105];
+ll tim[105];
+ll processed[105];
 
-
+ll DYKE_strah
 
 void solve()
 {
+	
+	
+	
+	ll n,e,t;cin>>n>>e>>t;
+	ll m;cin>>m;
+	for(ll i=0; i<m;i++)
+	{
+		ll u,v,w;
+		cin>>u>>v>>w;
+		adj[u].push_back({v,w});
+		
+	}
+	
 	
 }
 

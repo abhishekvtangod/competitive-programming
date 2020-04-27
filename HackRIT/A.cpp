@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 24.04.2020 17:58:15 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -37,6 +37,17 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+    ll n,t;
+	cin>>n>>t;
+	ll x= ceil(log2((t/(n*(1.0)))+1));
+	
+	ll y= n*pow(2,x-1);
+    
+    ll sum= n*(pow(2,x)-1);
+   
+   ll res= y-t+(sum-y)+1;
+    cout<<res<<endl;
+    return 0;
 	
 }
 
@@ -46,11 +57,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

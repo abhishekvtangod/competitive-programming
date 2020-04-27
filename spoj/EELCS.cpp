@@ -37,7 +37,20 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	string a,b;cin>>a>>b;
+	ll m =a.size(),n=b.size();
+	ll dp[10][10]={0};
 	
+	for(ll i=0;i <=m; i++)
+	{
+		for(ll j=0; j<=n;j++)
+		{
+			if(i == 0 || j ==0) dp[i][j]=0;
+			else if(a[i-1]==b[j-1]) dp[i][j] = dp[i-1][j-1]+1;
+			else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+		}
+	}
+	cout<<dp[m][n];
 }
 
 
@@ -46,11 +59,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

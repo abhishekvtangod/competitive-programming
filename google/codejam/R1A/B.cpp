@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 11.04.2020 06:20:36 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -47,9 +47,15 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll test=1;
 	while(t--)
 	{
+		cout<<"Case #"<<test<<":";
 		solve();
+		test++;
+		
+		
+		//cout<<'\n';
 	}
 	
 

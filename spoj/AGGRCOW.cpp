@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 20.04.2020 10:03:37 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -37,6 +37,12 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,c;cin>>n>>c;
+	ll x;vector<ll> v;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;v.push_back(x);
+	}
 	
 }
 

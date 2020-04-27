@@ -34,10 +34,25 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
-
 void solve()
 {
+	ll a,b,q,l,r;
+	cin>>a>>b>>q;
+	ll lcM = lcm(a,b);
+	cout<<lcM;
 	
+	while(q--)
+	{
+		cin>>l>>r;
+		ll ans = r-l+1;
+		
+		
+		
+		
+
+	}
+	
+	cout<<'\n';
 }
 
 

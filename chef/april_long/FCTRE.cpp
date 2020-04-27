@@ -29,8 +29,8 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
-vector<ll> adj[100005];
-ll visited[100005];
+//vector<ll> adj[100005];
+//ll visited[100005];
 
 
 //vector<ll> a;
@@ -65,30 +65,54 @@ ll visited[100005];
 	//return -1;
 //}
 
-ll bfs()
+vector<ll> adj[100006];
+ll visited[1000006];
+ll n;
+ll bfs(ll x)
 {
+
+	queue<ll> q;
+	visited[x]=1;
+	q.push(x);
 	
-}
-ll n_factors(ll n)
-{
-	ll cnt=0;
-	for(ll i=1;i*i<=n;i++)
+	while(!q.empty())
 	{
-		if(n%i == 0)
+		ll s = q.front();q.pop();
+		
+		
+		for(auto u:adj[s])
 		{
-			if(n/i == i)
-				cnt++;
-			else
-				cnt+=2;
+			if(!visited[u])
+			{
+				visited[u]=1;
+				q.push(x);
+			}
 		}
 	}
-	return cnt;
+	
 }
+
+
+//ll n_factors(ll n)
+//{
+	//ll cnt=0;
+	//for(ll i=1;i*i<=n;i++)
+	//{
+		//if(n%i == 0)
+		//{
+			//if(n/i == i)
+				//cnt++;
+			//else
+				//cnt+=2;
+		//}
+	//}
+	//return cnt;
+//}
  
 
 void solve()
 {
-	ll n,x,y;cin>>n;
+	ll x,y;cin>>n;
 	for(ll i=0;i<n;i++)
 	{
 		adj[i].clear();
@@ -115,14 +139,16 @@ void solve()
 		cin>>uu>>v;
 		fill(visited,visited+n+2,0);
 		flag=0;
-		if(uu==v)
-		{
-			cout<<(n_factors(a[v-1]))%mod<<endl;
-		}
-		else
-		{
-			cout<<(n_factors(dfs(uu)))%mod<<endl;
-		}
+		
+		
+		//if(uu==v)
+		//{
+			//cout<<(n_factors(a[v-1]))%mod<<endl;
+		//}
+		//else
+		//{
+			//cout<<(n_factors(dfs(uu)))%mod<<endl;
+		//}
 		
 	}
 	

@@ -37,7 +37,35 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	
+	ll n,x;cin>>n;
+	vector<ll> v;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		v.push_back(x);	//distinct
+	}
+	// (a*b)+c = (f+e)*d
+	vector<ll> a,b;
+	for(ll i=0; i< n;i++)
+	{
+		for(ll j =0;j < n; j++)
+		{
+			for( ll k = 0; k <n;k++)
+			{
+
+				a.push_back(v[i]*v[j]+v[k]);
+				if(v[k] == 0)continue;
+				b.push_back((v[i]+v[j])* v[k]);
+			}
+		}
+	}
+	sort(a.begin(),a.end());sort(b.begin(),b.end());
+	ll ans = 0;
+	for(ll i=0 ; i<a.size();i++)
+	{
+		ans+=upper_bound(b.begin(),b.end(),a[i])-lower_bound(b.begin(),b.end(),a[i]);
+	}
+	cout<<ans;
 }
 
 
@@ -46,11 +74,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

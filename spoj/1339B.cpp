@@ -37,7 +37,21 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,x;cin>>n;
+	vector<ll> v;
+	for(ll i=0 ; i<n; i++)
+	{
+		cin>>x;
+		v.push_back(x);
+	}
+	sort(v.begin(),v.end(), [](ll a,ll b,ll c)->bool{
+		return abs(a-b)<=abs(b);
+	});
 	
+	
+	for(auto u:v)
+		cout<<u<<" ";
+
 }
 
 

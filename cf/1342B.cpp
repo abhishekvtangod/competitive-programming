@@ -37,6 +37,29 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	string s;cin>>s;
+	ll period=0;
+	ll cnt1=0,cnt0=0;
+	for(ll i=0;i<s.size();i++)
+	{
+		if(s[i]=='0')
+			cnt0++;
+		else
+			cnt1++;
+	}
+	if(cnt0==0 || cnt1==0)
+	{
+		cout<<s<<'\n';return;
+	}
+	string ans="";
+	for(ll i=0;i<s.size();i++)
+	{
+		if(s[i] == '0')
+			ans+="01";
+		else
+			ans+="01";
+	}
+	cout<<ans<<endl;
 	
 }
 

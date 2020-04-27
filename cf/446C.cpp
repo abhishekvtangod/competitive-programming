@@ -33,10 +33,25 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
-
+ll prf[5*100000+5],v[5*100000+5];
+	
 
 void solve()
 {
+	ll n;cin>>n;
+	memset(prf,0,n+2);
+	v[0]=0;
+	
+	for(ll i=1; i<=n;i++)
+	{
+		cin>>v[i];
+		prf[i] = prf[i-1]+v[i];
+	}
+	if(prf[n]%3)
+	{
+		cout<<"0";return;
+	}
+	
 	
 }
 
@@ -46,11 +61,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

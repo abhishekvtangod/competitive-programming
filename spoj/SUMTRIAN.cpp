@@ -37,6 +37,33 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll r;
+	cin>>r;
+	ll arr[r+4][r+4],dp[r+4][r+4];
+	memset(dp,0,sizeof(dp));
+	memset(arr,0,sizeof(arr));
+
+	for(ll i=1;i<=r;i++)
+	{
+		for(ll j=1;j<=i;j++)
+		{
+			cin>>arr[i][j];
+		}
+	}
+	for(ll i=1;i<=r;i++)
+	{
+		for(ll j=1;j<=i;j++)
+		{
+			dp[i][j] = max(dp[i-1][j],dp[i-1][j-1])+arr[i][j];
+			//cout<<dp[i][j]<<" ";
+		}
+		//cout<<endl;
+	}
+	ll mx=0;
+	for(ll i=1;i<=r;i++)
+		mx = max(mx,dp[r][i]);
+		
+	cout<<mx<<endl;
 	
 }
 

@@ -32,11 +32,65 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+const ll mxN = 10005;
+ll tri[mxN*11*11][11];	
+ll cnt[mxN*11*11][11];
 
+ll root = 0,sz=1;
+
+void init()
+{
+	memset(tri,-1,sizeof(tri));
+	memset(cnt,-1,sizeof(cnt));
+
+}
+
+bool insert(string s)
+{
+	ll node = root;
+	for(ll i=0; i<s.size();i++)
+	{
+		ll ch = s[i]-'0';
+		if(tri[node][ch] == -1)
+			tri[node][ch] = sz++;
+		
+		node = tri[node][ch];
+		
+		if(cnt[node][ch] == 1)
+			return false;
+		
+		if(i == s.size()-1)
+		{
+			if(cnt[node][ch] == 2)
+				return false;
+		}
+		cnt[node][ch] = 2;
+		if(i == (s.size()-1))
+		{
+			cnt[node][ch]=1;
+			
+		}
+
+	}
+	return true;
+}
 
 
 void solve()
 {
+	ll n;cin>>n;
+	ll flag=0;
+	
+	for(ll i=0; i<n;i++)
+	{
+		string s;cin>>s;
+		if(!insert(s))
+		{
+			flag=1;
+		}
+	
+	}
+	cout<<(flag?"NO":"YES")<<"\n";
 	
 }
 
@@ -49,7 +103,10 @@ int main()
 	ll t;cin>>t;
 	while(t--)
 	{
+		init();
 		solve();
+		cout<<"sz: "<<sz<<endl;
+		
 	}
 	
 

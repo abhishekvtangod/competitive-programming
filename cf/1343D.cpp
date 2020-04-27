@@ -37,7 +37,16 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,x,k;cin>>n>>k;
+	vector<ll> v;
+	for(ll i=0; i<n;i++)
+	{
+		cin>>x;
+		v.push_back(x);
+	}
 	
+	
+	cout<<cnt<<endl;
 }
 
 

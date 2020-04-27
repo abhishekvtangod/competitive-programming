@@ -37,7 +37,17 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n;
+	cin>>n;
+	ll arr[22][22];
 	
+	for(ll i=0; i <n; i++)
+	{
+		for(ll j=0; j<n ; j++)
+		{
+				cin>>arr[i][j];
+		}
+	}
 }
 
 

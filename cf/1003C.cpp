@@ -34,10 +34,31 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
-
 void solve()
 {
+	ll x,n,k;cin>>n>>k;
+	vector<double> p;
+	ll sum=0;
+	p.push_back(0);
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		sum+=x;
+		p.push_back(sum);
+	}
 	
+	double mx=0;
+	for(ll i=0;i<n;i++)
+	{
+		
+		for(ll j = i+k;j<=n;j++)
+		{
+			mx=max(mx,(p[j]-p[i])/(j-i));
+		}
+	
+	
+	}
+	cout<<setprecision(20)<<mx;
 }
 
 
@@ -46,11 +67,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

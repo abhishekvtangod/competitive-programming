@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 20.04.2020 07:58:36 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -32,11 +32,32 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
-
+ll hash_fn(string s)
+{
+	for(ll i=0; i<s.size();i++)
+	{
+		
+	}
+}
 
 
 void solve()
 {
+	ll n;cin>>n;
+	map<ll,string> mp;
+	for(ll i=0; i <n;i++)
+	{
+		string s,a;cin>>a>>s;
+	
+		if(a == "ADD")
+		{
+			
+		}
+		else
+		{
+			mp[s]=0;
+		}
+	}
 	
 }
 

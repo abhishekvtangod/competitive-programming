@@ -47,9 +47,13 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Case #"<<i<<": ";
 		solve();
+		i++;
+		cout<<"\n";
 	}
 	
 

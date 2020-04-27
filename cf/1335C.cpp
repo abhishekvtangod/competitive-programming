@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 20.04.2020 14:25:16 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -37,6 +37,24 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,x;cin>>n;
+	vector<ll> v;
+	unordered_map<ll,ll> mp;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+	
+		mp[x]++;
+	}
+	ll diff = mp.size();
+	ll maxcnt = 0;
+	for(auto u:mp)
+	{
+		maxcnt = max(maxcnt,u.second);
+	}
+	//cout<<diff<<" "<<maxcnt<<endl;
+	
+	cout<<max(min(diff-1,maxcnt),min(diff,maxcnt-1))<<'\n';
 	
 }
 

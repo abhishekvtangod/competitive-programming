@@ -36,8 +36,19 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 void solve()
-{
-	
+{	
+	ll n;cin>>n;
+	for(ll i=2;i<=32;i++)
+	{
+		ll kk = (pow(2,i)-1);
+
+		double temp = (n/((double)kk));
+		if(ceil(temp) == floor(temp))
+		{
+		cout<<(ll)temp<<'\n';
+			break;
+		}
+	}
 }
 
 

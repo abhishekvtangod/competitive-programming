@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 24.04.2020 19:23:19 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -37,6 +37,38 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n;cin>>n;
+	vector<ll> a,b;
+	ll x;
+
+
+	ll dp[n+4][2];
+	memset(dp,0,sizeof(dp));
+    
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		a.push_back(x);
+	}
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		b.push_back(x);
+	}
+	for (int i = 0; i < n; i++)  
+    { 
+        if(i==0) 
+        { 
+            dp[i][0] = a[i]; 
+            dp[i][1] = b[i]; 
+            continue; 
+        } 
+          
+       dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + a[i]); 
+       dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] + b[i]); 
+    } 
+      
+    cout<<max(dp[n-1][0], dp[n-1][1]); 
 	
 }
 
@@ -46,11 +78,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

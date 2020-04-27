@@ -37,7 +37,40 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	
+		ll n;
+		cin>>n;
+		vector<pair<ll,ll>> v;
+		ll x,y;
+		for(ll i=0 ;i<n;i++)
+		{
+			cin>>x>>y;
+			v.push_back({x,y});
+		}
+		sort(v.begin(),v.end(),[](pair<ll,ll>& p1, pair<ll,ll>& p2)->bool{
+			if(p1.second == p2.second)
+				return p1.first < p2.first;
+			return p1.second < p2.second;
+		});
+		ll cnt=0;
+		pair<ll,ll> prev;
+		if(n >0)
+		{
+			prev = v[0];
+			cnt++;
+		}
+		
+		for(ll i=1 ;i<n;i++)
+		{
+			if(prev.second <= v[i].first)
+			{
+				cnt++;
+				prev = v[i];
+			}
+				
+				
+		}
+		cout<<cnt<<endl;
+		
 }
 
 

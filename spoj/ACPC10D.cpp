@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 26.04.2020 08:35:30 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -33,11 +33,37 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
-
-
+ll a[1000000+6][5];
+ll ans=0;
 void solve()
 {
+	memset(a,0,sizeof(a));
+
+
+	ll n;cin>>n;
+	if(n==0)
+		exit(0);
+	for(ll i=0;i<n;i++)
+		cin>>a[i][0]>>a[i][1]>>a[i][2];
 	
+
+
+	if(n == 1)
+		a[0][2] += a[0][1];
+	else {
+		a[0][2] += a[0][1];
+		a[1][0] += a[0][1];
+		a[1][1] += min(min(a[0][1], a[0][2]), a[1][0]);
+		a[1][2] += min(a[0][1], min(a[0][2], a[1][1]));
+
+		for(int i=2; i<n; i++) {
+			a[i][0] += min(a[i-1][0], a[i-1][1]);
+			a[i][1] += min(min(a[i-1][1], a[i][0]), min(a[i-1][2], a[i-1][0]));
+			a[i][2] += min(min(a[i][1], a[i-1][1]), a[i-1][2]);
+		}
+	}
+	
+	ans = a[n-1][1];
 }
 
 
@@ -46,10 +72,14 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
+	//ll t;cin>>t;
+	ll i=1;
+	while(1)
 	{
+		
 		solve();
+		cout<<i<<". "<<ans<<'\n';
+		i++;
 	}
 	
 

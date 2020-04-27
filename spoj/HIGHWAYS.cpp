@@ -33,10 +33,75 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
+vector<pair<ll,ll>> adj[100005];
+ll dist[100005];
+ll procd[100005];
+ll n,m;
+
+ll DYKE_strah(ll s, ll d)
+{
+	for(ll i=1; i<=n; i++)
+	{
+		dist[i] = 1e9+5;
+		procd[i] = false;
+	}
+
+
+	priority_queue<pair<ll,ll>> pq;
+	
+	
+	pq.push({0,s});
+	dist[s] = 0;
+	while(!pq.empty())
+	{
+		s = pq.top().second;pq.pop();
+		if(procd[s]) continue;
+		procd[s] = true;
+		
+		for(auto u:adj[s])
+		{
+				ll v = u.first,w = u.second;
+				
+		
+				if(dist[s]+w < dist[v])
+				{
+					dist[v] = dist[s]+w;
+					pq.push({-dist[v],v});
+				}
+				
+				
+		}
+	
+	}
+	if(dist[d] == 1e9+5)
+		return -1;
+	
+	return dist[d];
+	
+}
 
 
 void solve()
 {
+	ll s,d;cin>>n>>m>>s>>d;
+	ll u,v,w;
+	for(ll i=0;i <=n;i++)adj[i].clear();
+	
+	for(ll i=0;i<m;i++)
+	{
+		cin>>u>>v>>w;
+		adj[u].push_back({v,w});
+		adj[v].push_back({u,w});
+	}
+	
+	ll ans = DYKE_strah(s,d);
+	if(ans == -1)
+	{
+		cout<<"NONE\n";
+	}
+	else
+		cout<<ans<<"\n";
+	
 	
 }
 

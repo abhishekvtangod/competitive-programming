@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 25.04.2020 19:50:17 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -37,6 +37,36 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n,s;cin>>n>>s;
+	vector<ll> p,v;
+	ll x;
+	ll mn1=1e9+5,mn2=1e9+5;
+	ll need = 100-s;
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		p.push_back(x);
+		
+	}
+	for(ll i=0;i<n;i++)
+	{
+		cin>>x;
+		if(x==0)
+		{
+			mn1=min(mn1,p[i]);
+		}
+		else
+		{
+			mn2=min(mn2,p[i]);
+		}
+		
+	}
+	if(mn1+mn2<=need)
+	{
+		cout<<"yes\n";
+	}
+	else
+		cout<<"no\n";
 	
 }
 

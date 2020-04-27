@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 24.04.2020 15:02:47 IST       
 **/
 
 #include<bits/stdc++.h>
@@ -35,8 +35,30 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 
-void solve()
+inline void solve()
 {
+	ll r,c;cin>>r>>c;
+	ll dp[r+3][c+3]={0}, arr[r+3][c+3]={0};
+	memset(dp,0,sizeof(dp));
+	for(ll i=1;i<=r;i++)
+	{
+		for(ll j =1;j<=c;j++)
+		{
+			cin>>arr[i][j];
+
+		}
+	}
+	ll mx=0;
+	for(ll i=1;i<=r;i++)
+	{
+		for(ll j =1;j<=c;j++)
+		{
+			dp[i][j]= max(dp[i-1][j],max(dp[i-1][j-1],dp[i-1][j+1]))+arr[i][j];
+			mx = max(mx,dp[i][j]);
+		}
+	}
+	
+	cout<<mx<<endl;
 	
 }
 

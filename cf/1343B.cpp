@@ -37,7 +37,29 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n;cin>>n;
+	if((n/2)%2)
+	{
+				cout<<"NO\n";return;
+
+	}
 	
+	cout<<"YES\n";
+	vector<ll> v;
+	for(ll i=2;i<=n;i+=2)
+	{
+		v.push_back(i);
+	}
+	ll i=0;
+	for(i =0;i<(n/2)-1;i++)
+	{
+		v.push_back(v[i]-1);
+	}
+	v.push_back(v[i]+(n/2)-1);
+	
+	for(auto u:v)
+		cout<<u<<" ";
+	cout<<endl;
 }
 
 

@@ -37,7 +37,18 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll n;cin>>n;
+	string str;
+	cin.ignore();
+	map<string,ll> mp;
+	for(ll i=0;i<n;i++)
+	{
 	
+		getline(cin,str);
+		mp[str]++;
+	}
+	for(auto u :mp)
+		cout<<u.first<<" "<<u.second<<'\n';
 }
 
 
@@ -50,6 +61,7 @@ int main()
 	while(t--)
 	{
 		solve();
+		cout<<'\n';
 	}
 	
 

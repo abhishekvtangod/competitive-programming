@@ -37,6 +37,19 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll x,n,k;cin>>n>>k;
+    vector<ll> v;
+    for(ll i=0;i<n;i++)
+    {
+        cin>>x;
+        v.push_back(x);
+    }
+    ll mx=k;
+    for(ll i=n-1;i>=0;i--)
+    {
+            mx=min((k/v[i])*v[i],(mx/v[i])*v[i]);
+    }
+    cout<<mx;
 	
 }
 
@@ -47,9 +60,13 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Case #"<<i<<": ";
 		solve();
+		i++;
+		cout<<"\n";
 	}
 	
 

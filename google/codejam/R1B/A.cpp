@@ -37,6 +37,12 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
+	ll x,y;cin>>x>>y;
+	if(((x%2) && (y%2)) || (!(x%2) && !(y%2)))
+	{
+		cout<<"IMPOSSIBLE";return;
+	}
+	
 	
 }
 
@@ -47,9 +53,13 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll i=1;
 	while(t--)
 	{
+		cout<<"Case #"<<i<<": ";
 		solve();
+		cout<<"\n";
+		i++;
 	}
 	
 

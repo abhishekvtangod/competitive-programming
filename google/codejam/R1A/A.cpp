@@ -1,6 +1,6 @@
 /**
  *    author:  abhishekvtangod
- *    created:        
+ *    created: 11.04.2020 06:20:30 IST
 **/
 
 #include<bits/stdc++.h>
@@ -32,11 +32,35 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+bool subs(string s1, string s2)
+{
+	
+}
 
+sort(v.begin(),v.end(), [](string& a,string& b)->bool{
+
+	return a.size()<b.size();
+})
 
 
 void solve()
 {
+	ll n;cin>>n;
+	string s[55];
+	for(ll i=0; i<n;i++)
+	{
+		cin>>s[i];
+	}
+	for(ll i=0; i<n;i++)
+	{
+		for(ll j=0; j<n;j++)
+		{
+			if(subs(s[i].substr(1),s[j]))
+			{
+				
+			}
+		}
+	}
 	
 }
 
@@ -47,9 +71,15 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll test=1;
 	while(t--)
 	{
+		cout<<"Case #"<<test<<":";
 		solve();
+		test++;
+		
+		
+		//cout<<'\n';
 	}
 	
 

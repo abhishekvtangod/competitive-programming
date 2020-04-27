@@ -47,9 +47,15 @@ int main()
     cin.tie(nullptr);
 
 	ll t;cin>>t;
+	ll test=1;
 	while(t--)
 	{
+		cout<<"Case #"<<test<<":";
 		solve();
+		test++;
+		
+		
+		//cout<<'\n';
 	}
 	
 
