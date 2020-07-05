@@ -36,14 +36,32 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 
 void solve()
-{
+{	
 	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	//(3**n)-n
+	ll cnt=0;
+	for(ll i=sqrt(n);i>=1;i--)
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		ll x = (3*i*i+i)/2;
+		if(x<=n)
+		{
+			//cout<<x<<" "<<i<<endl;
+			//if(n-x<2)break;
+			cnt++;
+			n-=x;
+			i=sqrt(n)+1;
+		}
+
+	
+	
 	}
+	cout<<cnt<<endl;
+	
+	
+	
+	
+	
+	
 	
 	
 }
@@ -59,6 +77,7 @@ int main()
 	{
 		solve();
 	}
+	
 	
 
     return 0;

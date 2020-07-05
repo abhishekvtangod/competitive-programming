@@ -37,15 +37,16 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	string s;
+	cin>>s;
+	string ans=s[0];
+	for(ll i=1;i<s,size();i++)
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		if(ans[i+1] == ans.end())ans.push_back(s[i]);
+		else if(ans[i+1] == s[i+1])continue;
+		else if(ans[i-1] == ans.end())ans.insert(i-1);
+	
 	}
-	
-	
 }
 
 

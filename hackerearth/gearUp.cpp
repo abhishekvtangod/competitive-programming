@@ -32,18 +32,70 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
+const ll mxN = 1e5+5;
+vector<ll> adj[mxN];
+vector<ll> ve(mxN);
+vector<bool> visited(mxN,false);
+vector<ll> color(mxN,0);
 
+void bfs(int x)
+{
+	queue<ll> q;
+	ll s = x;
+	q.push(s);
+	visited[s]=true;
+	
+	while(!q.empty())
+	{
+		s = q.front();q.pop();
+		for(auto u:adj[s])
+		{
+			if(!visited[u])
+			{
+				visited[u]=true;
+				q.push(u);
+				if(ve[u]==-1)
+				{
+					color[u]=color[s];
+				}
+				else
+				{
+					color[u]=!color[s];
+					
+				}
+				//cout<<u<<" "<<color[u]<<endl;
+				
+			}
+			
+		}
+	}
+}
+
+void addEdge(ll u,ll v)
+{
+	adj[u].push_back(v);
+	adj[v].push_back(u);
+
+}
 
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	ll n,m,q;
+	cin>>n>>m>>q;
+	for(ll i=1;i<=n;i++)cin>>ve[i];
+	for(ll i=0;i<m;i++)
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		ll u,v;cin>>u>>v;
+		addEdge(u,v);
 	}
+	for(ll i=1;i<=n;i++)
+	{
+		if(!visited[i])
+			bfs(i);
+
+	}
+	//for(ll i=1;i<=n;i++)cout<<color[i]<<" ";
 	
 	
 }
@@ -54,11 +106,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

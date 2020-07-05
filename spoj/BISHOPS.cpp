@@ -37,15 +37,22 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	string n;
+	while(cin>>n)
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		if(n == "1" || n=="0")
+		{
+			if(n=="0")
+				cout<<"1\n";
+			else 
+				cout<<"0\n";
+			continue;
+		}
+		ll x = stoll(n);
+		cout<<2*x-2<<'\n';
 	}
 	
-	
+
 }
 
 
@@ -54,11 +61,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

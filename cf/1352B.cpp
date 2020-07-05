@@ -37,13 +37,35 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
-	{
-		ll x;cin>>x;
-		v.push_back(x);
-	}
+	ll n, k;
+    cin >> n >> k;
+    vector<ll> v1;
+    if ((n - k + 1) % 2 == 1 && n - k + 1 >= 0)
+    {
+        for (int i = 1; i < k; i++)
+        {
+            v1.push_back(1);
+        }
+        v1.push_back(n - k + 1);
+    }
+    else if ((n - (k - 1) * 2) % 2 == 0 && (n - (k - 1) * 2) != 0 && n - 2 * (k - 1) >= 0)
+    {
+        for (int i = 1; i < k; i++)
+        {
+            v1.push_back(2);
+        }
+        v1.push_back(n - 2 * (k - 1));
+    }
+    else
+    {
+        cout << "NO\n";
+        return;
+    }
+    cout << "YES\n";
+    for (int i = 0; i < k; i++)
+        cout << v1[i] << " ";
+    cout << "\n";
+
 	
 	
 }

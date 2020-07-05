@@ -38,13 +38,19 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 void solve()
 {
 	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	
+	ll a=0,b=0;
+	a = pow(2,n);
+	for(ll i=1;i<n/2;i++)
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		a+=pow(2,i);
 	}
 	
+	for(ll i= n/2;i<n;i++)
+		b+=pow(2,i);
+	
+		//cout<<a<<" "<<b<<endl;
+	cout<<abs(a-b)<<'\n';
 	
 }
 

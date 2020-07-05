@@ -32,17 +32,35 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 //   }
 // };
 
-
+struct cmp{
+    bool operator()(ll a,ll b){
+        return a >= b;
+    }
+};
 
 
 void solve()
 {
 	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	priority_queue<ll,vector<ll>,cmp> pq;
+	for(ll i =0;i<=n;i++)
 	{
 		ll x;cin>>x;
-		v.push_back(x);
+		ll temp;
+		if(x == 1)
+		{
+			cin>>temp;
+			pq.push(temp);
+		}
+		else if(x==2)
+		{
+			cin>>temp;
+			pq.pop();
+		}
+		else if(x==3)
+		{
+			cout<<pq.top()<<endl;
+		}
 	}
 	
 	
@@ -54,11 +72,11 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
-	{
+	//ll t;cin>>t;
+	//while(t--)
+	//{
 		solve();
-	}
+	//}
 	
 
     return 0;

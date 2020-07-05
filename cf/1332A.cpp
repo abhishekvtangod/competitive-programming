@@ -37,13 +37,17 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
+	ll a,b,c,d;cin>>a>>b>>c>>d;
+	ll x,y,x1,y1,x2,y2;cin>>x>>y>>x1>>y1>>x2>>y2;
+	x = x-(a-b);
+	y = y-(c-d);
+	
+	if((x1<x2 || a+b==0) && (x1<=x && x<=x2) && (y1<y2 || c+d==0) && (y1<=y && y<=y2))
 	{
-		ll x;cin>>x;
-		v.push_back(x);
+		cout<<"yes\n";return;
+		
 	}
+	cout<<"no\n";
 	
 	
 }

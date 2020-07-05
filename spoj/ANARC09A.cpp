@@ -33,17 +33,15 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 // };
 
 
-
+ll t;
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
-	{
-		ll x;cin>>x;
-		v.push_back(x);
-	}
+	string s;cin>>s;
+	if(s[0]=='-')break;
+	cout<<t<<". ";
+	
+	
 	
 	
 }
@@ -54,10 +52,12 @@ int main()
     ios::sync_with_stdio(false); 
     cin.tie(nullptr);
 
-	ll t;cin>>t;
-	while(t--)
+	t=1;
+	while(1)
 	{
+		
 		solve();
+		t++;
 	}
 	
 

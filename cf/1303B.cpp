@@ -37,14 +37,16 @@ template<class T> using oset=tree<T, null_type, less<T>, rb_tree_tag, tree_order
 
 void solve()
 {
-	ll n;cin>>n;
-	vector<ll> v;
-	for(ll i=0;i<n;i++)
-	{
-		ll x;cin>>x;
-		v.push_back(x);
-	}
+	ll n,g,b;cin>>n>>g>>b;
+	//if(g>=b){
+		//cout<<n<<endl;return;
+	//}
 	
+	ll needG = (n+1)/2;
+	ll totalG = needG/g*(b+g);
+	
+	totalG+= (needG%g==0LL)?(-b):(needG%g);
+	cout<<max(n,totalG)<<endl;
 	
 }
 
