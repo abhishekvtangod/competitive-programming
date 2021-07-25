@@ -1,0 +1,35 @@
+[
+	{
+		"test": "4\nabab\naabb\n"
+	},
+	{
+		"test": "1\na\nb\n"
+	},
+	{
+		"test": "8\nbabbaabb\nabababaa\n"
+	},
+	{
+		"test": "9\naaaaabbb\nbbbbbaaa\n"
+	},
+	{
+		"test": "2\nab\nba\n"
+	},
+	{
+		"test": "5\nbaaaa\nabaaa\n"
+	},
+	{
+		"test": "10\nbbbbbbbbbb\naaaaaaaaaa\n"
+	},
+	{
+		"test": "10\naaaaabbbbb\nababaaaaab\n"
+	},
+	{
+		"test": "8\naaaabbbb\nbabababa\n"
+	},
+	{
+		"test": "101\nbabbbbabbbbaabbbbbbbabbbababababbbbbbbbabaababbababbaaabbababbbbbbbbbaabbbababbbbbabbbbbabbbaabbbaabb\nbbabbbbbbabbbbbbbbbbbabbbbbbbbbbabbabbbbbbbbbbbabbababbbabbabbbbbbbbbbbbbaabbbabbbbabbabbbbababbbbbab\n"
+	},
+	{
+		"test": "10\naabaaaaaab\nbaaaaaabbb\n"
+	}
+]

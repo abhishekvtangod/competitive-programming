@@ -1,0 +1,146 @@
+/**
+ *    author:  abhishekvtangod
+**/
+// #undef _GLIBCXX_DEBUG
+// #undef _ABHI
+#include<bits/stdc++.h>
+using namespace std; 
+
+#define mod 1000000007
+#define gcd(a,b) __gcd(a,b)
+#define lcm(a,b) a/gcd(a,b)*b  // no overflow
+#define bits(x) __builtin_popcountll(x)
+#define endl "\n"
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+typedef long long int ll;
+
+string to_string(const string &s){
+	return "{" + s + "}";
+}
+
+string to_string(const char &c){
+	string s = "";
+	s += c;
+	return s;
+}
+
+template <typename A, typename B>
+string to_string(const pair<A, B> &p){
+	return "(" + to_string(p.first) + ", " + to_string(p.second) + ")";
+}
+
+template <typename A, typename B, typename C>
+string to_string(const tuple<A, B, C> &t){
+	return "(" + to_string(get<0>(t)) + ", " + to_string(get<1>(t)) + ", " + to_string(get<2>(t)) + ")";
+}
+
+template <typename A>
+string to_string(A v){
+	string res = "{";
+	bool f = 0;
+	for(const auto &u: v){
+		if(f){
+			res += ", ";
+		}
+		f = 1;
+		res += to_string(u);
+	}
+	res += "}";
+	return res;
+}
+
+void cus_debug() { cerr << "]" << endl; }
+
+template <typename Head, typename... Tail>
+void cus_debug(Head H, Tail... T) {
+  cerr << to_string(H) << ", ";
+  cus_debug(T...);
+}
+
+#ifdef _GLIBCXX_DEBUG
+#define debug(x...) cerr << "[" << #x << "]:[", cus_debug(x)
+#else
+#define debug(...) 42
+#endif
+
+
+
+// start of CP 2.0
+void solve(){
+	ll n, m;
+	cin >> n >> m;
+	vector<ll> a, c;
+	set<pair<ll, ll>> s;
+	// {cost_dishes, idx}
+
+	for(int i = 0; i < n; i++){
+		ll temp;
+		cin >> temp;
+		a.push_back(temp);
+	}
+	for(int i = 0; i < n; i++){
+		ll temp;
+		cin >> temp;
+		c.push_back(temp);
+		s.insert({temp, (ll)i+1});
+	}
+	ll cost = 0;
+	for(int i = 0; i < m; i++){
+		ll t, d;
+		cin >> t >> d;
+		ll temp_cost = 0;
+		ll rem = 0;
+		if(a[t-1] - d <= 0){
+			rem = d - a[t-1];
+			temp_cost += a[t-1]*c[t-1];
+			s.erase({c[t-1], t});
+			a[t-1] = 0;
+		} else{
+			temp_cost += d*c[t-1];
+			a[t-1] -= d;
+		}
+		while(rem){
+			if(!s.size()){
+				temp_cost = 0;
+				break;
+			}
+			// debug(rem, a, s);
+			ll start = s.begin()->first;
+			ll idx = s.begin()->second;
+			if(rem - a[idx-1] >= 0){
+				temp_cost += a[idx-1]*c[idx-1];
+				rem -= a[idx-1];
+				a[idx-1]=0;
+				s.erase({c[idx-1], idx});
+			} else{
+				temp_cost += rem*c[idx-1];
+				a[idx-1] -= rem;
+				rem = 0;
+			}
+		}
+		// cost += temp_cost;
+		cout << temp_cost << endl;
+	}
+	// cout << cost << endl;
+	
+}
+
+int main()
+{   
+	IOS;
+
+ 	#ifdef _ABHI
+		freopen("/home/abhi/Documents/input.txt", "r", stdin);
+		freopen("/home/abhi/Documents/output.txt", "w", stdout);
+	#endif 
+ 
+
+	ll t=1;
+	// cin>>t;
+	while(t--){
+		solve();
+	}
+	
+
+    return 0;
+}
