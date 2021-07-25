@@ -1,0 +1,17 @@
+[
+	{
+		"test": "ABA\n"
+	},
+	{
+		"test": "BACFAB\n"
+	},
+	{
+		"test": "AXBYBXA\n"
+	},
+	{
+		"test": "ABAXXXAB\n"
+	},
+	{
+		"test": "bab\n"
+	}
+]

@@ -1,6 +1,5 @@
 /**
  *    author:  abhishekvtangod
- *    created: 
 **/
 // #undef _GLIBCXX_DEBUG
 // #undef _ABHI
@@ -34,29 +33,80 @@ void debug_out(Head H, Tail... T) {
 #define debug(...) 42
 #endif
 
-// struct HASH{
-//   size_t operator()(const pair<int,int>&x)const{
-//     return hash<long long>()(((long long)x.first)^(((long long)x.second)<<32));
-//   }
-// };
 
-const int mxN = 1e6;
+const int mxN = 2*1e5 + 6;
 vector<int> adj[mxN];
+vector<pair<int, int>> edge;
+int visited[mxN];
+int priority[mxN];
+vector<int> order;
+int flag = 0;
 
+void init(int n){
+	for(int i = 0 ; i < n+5; i++){
+		adj[i].clear();
+		visited[i] = 0;
+		priority[i] = -1;
+		edge.clear();
+	}
+	order.clear();
+	flag = 0;
+}
+
+void dfs(int s, int parent){
+	if(visited[s]){
+		return;
+	}
+	visited[s] = 1;
+	for(auto u: adj[s]){
+		if(visited[u]==1 && u != parent){
+			// debug(s, u, parent);
+			flag = 1;
+		} else if(!visited[u]){
+			dfs(u, s);
+		} 
+	}
+	visited[s] = 2;
+	order.push_back(s);
+}
 
 void solve(){
-	int n,m;
+	int n, m;
 	cin >> n >> m;
-	for(int i = 0;i<m;i++){
-		int t,x,y;
+	init(n);
+	for(int i = 0 ; i < m; i++){
+		int t, x, y;
 		cin >> t >> x >> y;
-		if(t==0){
-			adj[x].push_back(y);
-			adj[y].push_back(x);
-		} else{
+		x--; y--;
+		if(t == 1){
 			adj[x].push_back(y);
 		}
+
+		edge.push_back({x, y});
 	}
+	for(int i = 0 ; i< n; i++){
+		if(!visited[i]){
+			dfs(i, -1);
+		}
+	}
+	if(flag){
+		cout << "NO" << endl;
+		return;
+	}
+	cout << "YES" << endl;
+	int cnt = 1;
+	for(int i : order){
+		priority[i] = cnt++;
+	}
+	for(auto u: edge){
+		int a = u.first, b = u.second;
+		if(priority[a] < priority[b]){
+			swap(a, b);
+		}
+		cout << a+1 << " " << b+1 << endl;
+	}
+
+
 }
 
 
@@ -70,7 +120,8 @@ int main()
 	#endif 
  
 
-	ll t;cin>>t;
+	ll t=1;
+	cin>>t;
 	while(t--){
 		solve();
 	}

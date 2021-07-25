@@ -1,0 +1,14 @@
+[
+	{
+		"test": "5\nababa\ncodedoca\nabcda\nzxzytyz\nabcdefghijklmnopqrstuvwxyza\n"
+	},
+	{
+		"test": "1\nabcdxdcbc\n"
+	},
+	{
+		"test": "1\ndcxabax\n"
+	},
+	{
+		"test": "1\nxcdcdcx\n"
+	}
+]

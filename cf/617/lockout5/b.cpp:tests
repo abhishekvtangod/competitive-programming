@@ -1,0 +1,35 @@
+[
+	{
+		"test": "4\nabaa\n"
+	},
+	{
+		"test": "7\naacdeee\n"
+	},
+	{
+		"test": "2\naz\n"
+	},
+	{
+		"test": "100\nbbbbbabbaaaaababbabaaaababbaaababbbabbbbbbbabbbbabbaaabbaababaabbbbbababbababaaaabbbbabbabababbaaaab\n"
+	},
+	{
+		"test": "6\nabacaa\n"
+	},
+	{
+		"test": "21\nltezwizhgfqhcwtonakgg\n"
+	},
+	{
+		"test": "24\nbxstlxalhkcaguyydabgpyts\n"
+	},
+	{
+		"test": "6\naaabab\n"
+	},
+	{
+		"test": "6\naabacc\n"
+	},
+	{
+		"test": "87\nabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaabaaaba\n"
+	},
+	{
+		"test": "10\naaaabbbbaa\n"
+	}
+]

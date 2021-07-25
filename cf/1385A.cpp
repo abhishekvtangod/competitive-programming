@@ -1,6 +1,5 @@
 /**
  *    author:  abhishekvtangod
- *    created: 
 **/
 // #undef _GLIBCXX_DEBUG
 // #undef _ABHI
@@ -34,22 +33,26 @@ void debug_out(Head H, Tail... T) {
 #define debug(...) 42
 #endif
 
-// struct HASH{
-//   size_t operator()(const pair<int,int>&x)const{
-//     return hash<long long>()(((long long)x.first)^(((long long)x.second)<<32));
-//   }
-// };
 
 void solve(){
-	ll x,y,z;
+	ll x, y, z;
 	cin >> x >> y >> z;
-	string a = "YES",b = "NO";
-	
+
+	string aa = "YES", bb = "NO";
+
+	int a = min(x, y);
+	int b = min(x, z);
+	int c = min(y, z);
+
+	if(x == max(a, b) && y == max(a, c) && z == max(b, c)){
+		cout << aa << endl;
+		cout << a << " " << b << " " << c << endl;
+		return;
+	}
+	cout << bb << endl;
 
 }
-// a>b
-// b>(a&c)
-// c>(b)
+
 
 int main()
 {   
@@ -61,7 +64,8 @@ int main()
 	#endif 
  
 
-	ll t;cin>>t;
+	ll t=1;
+	cin>>t;
 	while(t--){
 		solve();
 	}
